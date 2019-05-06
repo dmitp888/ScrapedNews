@@ -1,5 +1,4 @@
 // Grab the articles as a json
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 $.getJSON("/articles", function(data) {
@@ -10,7 +9,7 @@ $.getJSON("/articles", function(data) {
   }
 });
   // $("update").on("click",scrape() )
-  $(document).on("click", "#update", scrape() )
+  // $(document).on("click", "#update", scrape() )
 
 // Whenever someone clicks a p tag
 $(document).on("click", "p", function() {

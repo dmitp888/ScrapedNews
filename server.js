@@ -32,7 +32,7 @@ mongoose.connect("mongodb://localhost/NewsScraper", { useNewUrlParser: true });
 // Routes
 
 // A GET route for scraping the echoJS website
-function update(){
+// function update(){
 app.get("/scrape", function scrape(req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://www.rt.com/news/").then(function(response) {
@@ -64,9 +64,9 @@ console.log (response.data)
     res.send("Scrape Complete");
   });
 });
-};
+// };
 
-$(document).on("click", "#update", scrape() );
+// $(document).on("click", "#update", scrape() );
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
@@ -122,4 +122,3 @@ app.post("/articles/:id", function(req, res) {
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
 });
-module.exports="server.js"
