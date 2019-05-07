@@ -1,6 +1,5 @@
 // Grab the articles as a json
-
-
+// var Server= require("Server.js");
 $.getJSON("/articles", function(data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
@@ -8,7 +7,11 @@ $.getJSON("/articles", function(data) {
     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
   }
 });
-  // $("update").on("click",scrape() )
+  $("#update").on("click",function(){
+    $.get("/scrape", function(){
+      alert("Updated!");
+    });
+  });
   // $(document).on("click", "#update", scrape() )
 
 // Whenever someone clicks a p tag
@@ -73,3 +76,4 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+

@@ -38,16 +38,15 @@ app.get("/scrape", function scrape(req, res) {
   axios.get("https://www.rt.com/news/").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-console.log (response.data)
-    // Now, we grab every h2 within an article tag, and do the following:
+
     $(".card").each(function(i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this).find("a").text();
-      // result.link = $(this).find("a").attr("href");
-
+      newlink = "rt.com" +  $(this).find("a").attr("href");
+      result.link=newlink
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
@@ -64,9 +63,6 @@ console.log (response.data)
     res.send("Scrape Complete");
   });
 });
-// };
-
-// $(document).on("click", "#update", scrape() );
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
